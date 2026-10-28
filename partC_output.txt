@@ -1,0 +1,8 @@
+join: 20 counties, 24 polygons; matched 20; county rows unmatched 0; polygons with no county 4 ['D21', 'D22', 'D23', 'D24'] -> LEFT OUT of both maps (no data), stated in the caption
+r(crimes, population) +0.935; top 3 by count ['Dunmere', 'Pellbrook', 'Grimsby']; by rate ['Hollowfield', 'Netherby', 'Elmsworth']; overlap 0; counties moving ≥3 places: 7 ['Calder', 'Dunmere', 'Elmsworth', 'Hollowfield', 'Pellbrook', 'Rushmere', 'Stonegate']
+   Elmsworth: population 22,000; count rank 13 -> rate rank 3
+   Hollowfield: population 12,000; count rank 16 -> rate rank 1
+   Hollowfield: 216 crimes in 12,000 -> 1,800 ± 240 per 100k
+   Netherby: 3031 crimes in 170,000 -> 1,783 ± 63 per 100k
+   Elmsworth: 384 crimes in 22,000 -> 1,745 ± 175 per 100k
+saved partC_mapA_count.png, partC_mapB_rate.png (show A first, then B)

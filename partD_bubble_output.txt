@@ -1,0 +1,9 @@
+D1 rows 60, regions 6; pop 0.6–353.4 M (×589)
+sizes=(16, 1600) pt² -> area ratio 100×, diameter ratio 10.0× (radius-encoding the same range would be ×589)
+gdp outlier: Aldonia $120,219 = 9.2× next; on log10 x it sits 0.97 decades right -> KEPT, labelled
+r(log10 gdp, access) = 0.834; access mean per country 48.3, population-weighted 54.9
+palette worst deutan pair #009E73/#CC79A7 ΔE 7.5 (needs a second channel)
+palette worst protan pair #0072B2/#CC79A7 ΔE 9.5 (ok)
+palette worst tritan pair #0072B2/#009E73 ΔE 8.4 (ok)
+second channel: region letter A–F printed on every mark
+saved /tmp/tmp.wwZRJj3TGv/W5_AI-016/partD_bubble.png

@@ -1,0 +1,8 @@
+axis order (greedy |r| chain): healthcare_access -> cases_per_100k -> urban_pct -> median_age -> gdp_pc
+r(healthcare_access, cases_per_100k) = -0.799
+  healthcare_access  | cases_per_100k   r -0.799  rho -0.810  lines crossing in this gap 81.1%
+  cases_per_100k     | urban_pct        r -0.619  rho -0.570  lines crossing in this gap 70.5%
+  urban_pct          | median_age       r +0.644  rho +0.607  lines crossing in this gap 28.2%
+  median_age         | gdp_pc           r +0.281  rho +0.868  lines crossing in this gap 16.2%
+brushed: Borealis, n = 10; mean access 43.8 vs 48.3, mean cases 115.1 vs 104.2
+saved /tmp/tmp.wwZRJj3TGv/W5_AI-016/partD_pcp.png

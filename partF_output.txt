@@ -1,0 +1,15 @@
+[join] Natural Earth Asia features 53; matched to OWID 48; unmatched 5: ['Taiwan', 'N. Cyprus', 'Macao', 'Indian Ocean Ter.', 'Siachen Glacier'] -> drawn as 'no data'
+[suppress] reported deaths missing or exactly 0 -> 'no usable report' (not a low rate): ['Turkmenistan', 'North Korea', 'Hong Kong']
+[normalize] 45 countries; 1,638,384 reported deaths / 4.66 bn residents = 35.2 per 100,000 (pooled)
+           r(deaths, population) +0.792; r(rate, population) -0.161
+top 5 by COUNT: India 533,623, Indonesia 162,059, Iran 146,837, China 122,304, Turkey 101,419
+top 5 by RATE:  Georgia 458, Armenia 316, Lebanon 199, Iran 166, Cyprus 162
+[classify] Jenks k=5 edges [1, 26, 77, 199, 316, 458]; per class [16, 15, 12, 1, 1]; GVF equal 0.935, quantile 0.652, natural 0.954
+small population: Cyprus 0.90 M, 1451 deaths, rate 161.9 (95% ≈ 153.6–170.3) -> same class across its interval, shown
+small population: Brunei 0.45 M, 179 deaths, rate 39.9 (95% ≈ 34.0–45.7) -> same class across its interval, shown
+small population: Bhutan 0.78 M, 21 deaths, rate 2.7 (95% ≈ 1.5–3.8) -> same class across its interval, shown
+[project] Albers equal-area conic (15.0°N/55.0°N, 95.0°E); planar ÷ spherical area on 40 large rings: max error 0.01% (vertex sampling only)
+saved partF_map.png
+count map check (Jenks on deaths): darkest class ['India']; Georgia in count class 1 of 5
+
+RAW-COUNT COUNTERFACTUAL: a count map (same Jenks scheme) would put India (533,623) alone in the darkest class and Iran, Indonesia, China next — large-population countries — while Georgia, with 3.7 M people and the highest rate, would sit in the palest class.

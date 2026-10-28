@@ -1,0 +1,99 @@
+
+==============================================================================
+CASE 1: Population and healthcare access are unrelated
+==============================================================================
+marks 60; s=pop_m**2 -> area ratio 346,921×, DIAMETER ratio 589× (radius ∝ value)
+countries < 2.0 M people: 9 -> drawn 1.9 pt across or less; under 1 pt across: 3
+  [finding] the brief's '589× the area' is 589× the DIAMETER; area is 589² = 346,921×. The 9 sub-2 M countries are < 2 pt wide (3 are < 1 pt).
+largest mark (Wessant, 353.4 M): 353 pt = 4.9 in across on a 6.4 in figure; Vornath 3.3 in
+actual relation: r(pop, access) +0.21, r(log pop, access) +0.27; countries ≥50 M mean access 53.4 vs 47.7
+decoy 'the log x-axis distorts it': GDP spans $283–$120,219 (425×); log is the right axis — the x positions are fine, the SIZE channel is what is broken
+   saved partA_case01.png
+
+==============================================================================
+CASE 2: The outbreak is concentrated in the three districts around the capital
+==============================================================================
+join: 24 features, 24 rows, unmatched 0+0
+top 3 by count ['D17', 'D13', 'D09']; by rate ['D19', 'D20', 'D21']; overlap 0
+r(cases, population) +0.986; r(rate, population) -0.000
+count top-3 hold 6.3–11.0 M people each, 41.8% of all residents, 42.8% of cases; their rates 49.9, 64.0, 51.0 vs national 52.8
+decoy 'it's the class scheme': equal    top count class = ['D17']
+decoy 'it's the class scheme': quantile top count class = ['D09', 'D11', 'D13', 'D17', 'D24']
+decoy 'it's the class scheme': natural  top count class = ['D17']
+   saved partA_case02.png
+
+==============================================================================
+CASE 3: GDP per capita barely varies across the sample
+==============================================================================
+min–max gdp_pc: 58/60 below 0.10, median 0.017
+one value: Aldonia $120,219 = 9.2× the next ($13,009)
+decoy 'GDP genuinely varies little': coefficient of variation by column gdp_pc 2.65, healthcare_access 0.30, urban_pct 0.40, median_age 0.19, cases_per_100k 0.19 -> GDP varies MOST
+without Aldonia GDP still spans $283–$13,009 (46×)
+rank scaling: gdp_pc median 0.508, below 0.10: 5
+   saved partA_case03.png
+
+==============================================================================
+CASE 4: Healthcare access and case rate are unrelated — no crossing pattern
+==============================================================================
+file order ['gdp_pc', 'healthcare_access', 'urban_pct', 'median_age', 'cases_per_100k']; access and cases are 3 axes apart
+r(healthcare_access, cases_per_100k) = -0.799; lines that would cross if adjacent: 81%
+   file-order gap gdp_pc | healthcare_access: r +0.365, crossing 15%
+   file-order gap healthcare_access | urban_pct: r +0.754, crossing 21%
+   file-order gap urban_pct | median_age: r +0.644, crossing 28%
+   file-order gap median_age | cases_per_100k: r -0.587, crossing 71%
+greedy order: healthcare_access -> cases_per_100k -> urban_pct -> median_age -> gdp_pc
+decoy 'n = 60 is too few to see a pattern': r = -0.80 with n = 60 has p = 1.9e-14
+   saved partA_case04.png
+
+==============================================================================
+CASE 5: There is a clear five-level gradient in incidence
+==============================================================================
+rates 31.07–33.40, spread 7.2% of mean
+pooled 32.25; chi-square homogeneity 2.30 on 23 df, p = 1.000 (expected ≈ 23 if only Poisson noise) -> LESS spread than noise alone
+each rate's 95% CI is ±3.7 to ±5.2; all 24/24 contain the pooled rate; total spread is 2.33
+decoy 'just use another scheme': quantile breaks [31.07, 31.49, 32.07, 32.51, 32.94, 33.4] — still 5 confident colours
+decoy 'just use another scheme': equal    breaks [31.07, 31.54, 32.0, 32.47, 32.93, 33.4] — still 5 confident colours
+decoy 'just use another scheme': natural  breaks [31.07, 31.51, 32.04, 32.55, 33.02, 33.4] — still 5 confident colours
+   saved partA_case05.png
+
+==============================================================================
+CASE 6: Unit U32 is a hotspot at nearly five times the national rate
+==============================================================================
+pooled 8.72; U32 40.9 = 4.7× from 9 cases in 22,000
+units > 100k: 10, rates 5.5–12.0
+expected cases in U32 at the common rate: 1.92; P(≥9) = 0.00018; chance that at least one of 40 units does this: 0.0070
+U32 exact 95% CI 18.7–77.7 per 100k: the data cannot pin the rate to within a factor of 4.2
+units under 25,000 people: 10; their rates span 0.0–40.9 (zero-case units: 3)
+decoy 'U32 really has an outbreak': the file states every unit has the SAME true rate; the funnel (Part B5) shows the extremes are all small units
+   saved partA_case06.png
+
+==============================================================================
+CASE 7: District income and case rate are only weakly related, r ≈ −0.31
+==============================================================================
+r across 24 districts -0.308
+same data, 6 zones (districts_coarse members): r -0.889 (mean district income), -0.746 (population-weighted income)
+within-zone r (4 districts each): P1 -0.67, P2 -0.06, P3 -0.69, P4 +0.26, P5 +0.04, P6 +0.77
+p-values: districts 0.143 (n=24), zones 0.018 (n=6)
+decoy 'n = 24 is too small for r': the problem is not n — the SAME people give r from -0.31 to -0.89 depending only on where the lines are drawn (MAUP, scale effect)
+   saved partA_case07.png
+
+==============================================================================
+CASE 8: This is a rural outbreak — look how much of the map is dark
+==============================================================================
+five most populous districts: 12.6% of land, 59.9% of people
+top two classes (rate > 54.4): 9 districts, 31.2% of land, 26.5% of people, 33.0% of cases
+density 6–327 people/km²; r(rate, density) +0.001, r(rate, log density) +0.137 -> no rural/urban gradient in the RATE
+decoy 'the projection inflates the north': the map is Lambert equal-area (area error < 1e-10 %); even Mercator would only inflate north vs south by 1.21× (Part B4) — the issue is km² vs people, not the projection
+share by rate class (land % / people %): class 1 18.1/3.4; class 2 25.4/20.6; class 3 25.3/49.5; class 4 22.9/19.2; class 5 8.3/7.3
+   saved partA_case08.png
+
+==============================================================================
+CASE 9: Region A is the stronger of the two — its profile encloses visibly more area
+==============================================================================
+means A 62.3, B 62.0 (diff 0.33); file-order areas A 9,933, B 9,433
+axis orders: 120 with the first axis fixed = 60 distinct (a mirror image encloses the same area). A − B area ranges -1,131 to +1,659; B encloses MORE in 21 of 60 distinct orders
+indicator differences A − B: access +3.4, staffing -0.6, funding +35.5, coverage -42.7, equipment +15.3, training -8.9
+decoy 'the axes have different scales': all six are 0–100 (same scale) — the area depends on which values sit NEXT to each other, i.e. on the order
+   saved partA_case09.png
+
+all nine self-checks passed
