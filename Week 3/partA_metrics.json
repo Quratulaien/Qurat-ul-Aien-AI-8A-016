@@ -1,0 +1,369 @@
+{
+ "c1": {
+  "rate_std": 2.15,
+  "rate_prem": 5.4,
+  "prem_motorway_share": 0.85,
+  "std_motorway_share": 0.03333333333333333,
+  "std_inner_share": 0.6333333333333333,
+  "road_rate_all": {
+   "Motorway": 6.111111111111112,
+   "City arterial": 2.84,
+   "Inner-city lanes": 1.3846153846153846
+  },
+  "rate": {
+   "Motorway": {
+    "Standard": 8.0,
+    "Premium": 6.0
+   },
+   "City arterial": {
+    "Standard": 3.0,
+    "Premium": 2.2
+   },
+   "Inner-city lanes": {
+    "Standard": 1.394736842105263,
+    "Premium": 1.0
+   }
+  },
+  "std_adj": {
+   "Standard": 4.173947368421053,
+   "Premium": 3.1
+  },
+  "speed_overall": {
+   "Premium": 66.95325,
+   "Standard": 30.22383333333333
+  },
+  "exp_overall": {
+   "Premium": 31.4225,
+   "Standard": 31.498333333333335
+  },
+  "speed_within": {
+   "Motorway": {
+    "Standard": 70.95,
+    "Premium": 72.19235294117648
+   },
+   "City arterial": {
+    "Standard": 38.0165,
+    "Premium": 39.608000000000004
+   },
+   "Inner-city lanes": {
+    "Standard": 23.978947368421053,
+    "Premium": 25.55
+   }
+  },
+  "exp_within": {
+   "Motorway": {
+    "Standard": 41.4,
+    "Premium": 32.188235294117646
+   },
+   "City arterial": {
+    "Standard": 31.72,
+    "Premium": 27.64
+   },
+   "Inner-city lanes": {
+    "Standard": 30.860526315789475,
+    "Premium": 24.3
+   }
+  },
+  "injuries": 345,
+  "trips": 100000
+ },
+ "c2": {
+  "r": 0.9820234879657196,
+  "r_noexam": 0.9958839841509959,
+  "n_exam": 8,
+  "r_cups_enrol": 0.9968681058807304,
+  "r_fail_enrol": 0.9774907530241821,
+  "r_exam_cups": 0.05754361088202749,
+  "enrol_first": 1765,
+  "enrol_last": 5406,
+  "enrol_ratio": 3.0628895184135976,
+  "cps_min": 1.9722222222222223,
+  "cps_max": 2.2109856262833674,
+  "fail_min": 32.20478943022296,
+  "fail_max": 40.34405078844972,
+  "r_rate": 0.2932632658392706,
+  "r_partial": 0.45515805148003985,
+  "p_rate": 0.16428674188941317,
+  "fail_exam": 38.61799008320183,
+  "fail_nonexam": 34.14557344147342
+ },
+ "c3": {
+  "before": 202.09462121212124,
+  "after": 137.20576923076922,
+  "fall": -0.3210815388958017,
+  "zone": {
+   "Arterial|before": {
+    "mean": 244.69777777777776,
+    "rows": 360,
+    "reporting": 360
+   },
+   "Industrial|before": {
+    "mean": 322.04055555555556,
+    "rows": 360,
+    "reporting": 360
+   },
+   "Peri-urban|before": {
+    "mean": 78.94958333333334,
+    "rows": 240,
+    "reporting": 240
+   },
+   "Residential|before": {
+    "mean": 121.64222222222222,
+    "rows": 360,
+    "reporting": 360
+   },
+   "Arterial|after": {
+    "mean": 245.86833333333334,
+    "rows": 360,
+    "reporting": 180
+   },
+   "Industrial|after": {
+    "mean": null,
+    "rows": 360,
+    "reporting": 0
+   },
+   "Peri-urban|after": {
+    "mean": 80.39,
+    "rows": 240,
+    "reporting": 240
+   },
+   "Residential|after": {
+    "mean": 120.75166666666667,
+    "rows": 360,
+    "reporting": 360
+   }
+  },
+  "n_stations_keep": 13,
+  "n_stations": 22,
+  "lfl_before": 137.0917948717949,
+  "lfl_after": 137.20576923076922,
+  "lfl_change": 0.0008313725783584136,
+  "ind_before": 322.04055555555556,
+  "reporting_after": {
+   "Arterial": 0.5,
+   "Industrial": 0.0,
+   "Peri-urban": 1.0,
+   "Residential": 1.0
+  },
+  "stations_per_day_before": 22.0,
+  "stations_per_day_after": 13.0,
+  "n_blank": 540,
+  "n_industrial": 6
+ },
+ "c4": {
+  "stats": {
+   "Computer Science": {
+    "n": 11.0,
+    "mean x": 18.0,
+    "mean y": 14.50090909090909,
+    "SD x": 6.6332495807108,
+    "SD y": 2.031568135925815,
+    "Pearson r": 0.81642051634484,
+    "slope": 0.25004545454545457
+   },
+   "Business Administration": {
+    "n": 11.0,
+    "mean x": 18.0,
+    "mean y": 14.50090909090909,
+    "SD x": 6.6332495807108,
+    "SD y": 2.031656735501618,
+    "Pearson r": 0.8162365060002428,
+    "slope": 0.25000000000000006
+   },
+   "Electrical Engineering": {
+    "n": 11.0,
+    "mean x": 18.0,
+    "mean y": 14.499999999999998,
+    "SD x": 6.6332495807108,
+    "SD y": 2.0304236011236663,
+    "Pearson r": 0.8162867394895985,
+    "slope": 0.24986363636363634
+   },
+   "Architecture": {
+    "n": 11.0,
+    "mean x": 18.0,
+    "mean y": 14.50090909090909,
+    "SD x": 6.6332495807108,
+    "SD y": 2.0305785113876023,
+    "Pearson r": 0.8165214368885028,
+    "slope": 0.24995454545454546
+   }
+  },
+  "shape": {
+   "Computer Science": {
+    "r2_lin": 0.666542459508775,
+    "r2_quad": 0.6873274348982257,
+    "max_cook": 0.48920927577433454,
+    "max_lev": 0.3181818181818182,
+    "distinct_x": 11,
+    "max_abs_res": 1.9212727272727275
+   },
+   "Business Administration": {
+    "r2_lin": 0.6662420337274847,
+    "r2_quad": 0.999999457857722,
+    "max_cook": 0.8078693037841025,
+    "max_lev": 0.3181818181818182,
+    "distinct_x": 11,
+    "max_abs_res": 1.9009090909090904
+   },
+   "Electrical Engineering": {
+    "r2_lin": 0.6663240410665595,
+    "r2_quad": 0.6846927688130611,
+    "max_cook": 1.3928494502510695,
+    "max_lev": 0.3181818181818182,
+    "distinct_x": 11,
+    "max_abs_res": 3.241090909090911
+   },
+   "Architecture": {
+    "r2_lin": 0.6667072568984653,
+    "r2_quad": null,
+    "max_cook": 0.13671794558336953,
+    "max_lev": 1.0,
+    "distinct_x": 2,
+    "max_abs_res": 1.8390000000000004
+   }
+  }
+ },
+ "c5": {
+  "max_dev": 4.3612116288116454e-05,
+  "shape": {
+   "straight line": {
+    "r2": 0.17639931137531262,
+    "resid_sd": 13.650833431797677,
+    "x_min": 27.331,
+    "x_max": 68.669,
+    "y_min": 26.332,
+    "y_max": 103.696,
+    "x_kurt": -1.200067778058919
+   },
+   "ring": {
+    "r2": 0.1764026331500605,
+    "resid_sd": 13.650810969232433,
+    "x_min": 28.843,
+    "x_max": 66.135,
+    "y_min": 39.518,
+    "y_max": 85.245,
+    "x_kurt": -1.4797457849479605
+   },
+   "star": {
+    "r2": 0.17639794579071988,
+    "resid_sd": 13.650877241321762,
+    "x_min": 28.295,
+    "x_max": 71.41,
+    "y_min": 36.625,
+    "y_max": 92.413,
+    "x_kurt": -0.9399791501457284
+   },
+   "two clusters": {
+    "r2": 0.17639771924522443,
+    "resid_sd": 13.650854261940339,
+    "x_min": 29.61,
+    "x_max": 65.316,
+    "y_min": 23.302,
+    "y_max": 93.841,
+    "x_kurt": -1.7794151817198662
+   },
+   "the letter X": {
+    "r2": 0.17639874472680941,
+    "resid_sd": 13.650826987833529,
+    "x_min": 27.445,
+    "x_max": 68.555,
+    "y_min": 29.207,
+    "y_max": 97.16,
+    "x_kurt": -1.2002964491862682
+   }
+  },
+  "n": 180
+ },
+ "c6": {
+  "r": 0.7651666421647184,
+  "r_wo": -0.003622301446487226,
+  "spearman": 0.03166192164538572,
+  "row": 0,
+  "hba1c_row": 15.8,
+  "creat_row": 1050.0,
+  "hba1c_med": 5.535,
+  "creat_med": 81.55,
+  "hba1c_max_wo": 7.3,
+  "creat_max_wo": 111.4,
+  "r_age_hba1c": -0.06840823247281469,
+  "r_age_creat": -0.07633032343823438,
+  "n_pairs": 190,
+  "strong": [
+   [
+    "systolic",
+    "diastolic",
+    0.8627001032365941
+   ],
+   [
+    "systolic",
+    "map_mmhg",
+    0.9583647744991359
+   ],
+   [
+    "diastolic",
+    "map_mmhg",
+    0.9709160597801045
+   ],
+   [
+    "resting_hr",
+    "vo2max",
+    0.7747967717370728
+   ],
+   [
+    "sleep_hours",
+    "deep_sleep_min",
+    0.9461663038976956
+   ],
+   [
+    "step_count",
+    "floors_climbed",
+    0.9841429756995411
+   ],
+   [
+    "hba1c",
+    "creatinine",
+    0.7651666421647184
+   ]
+  ],
+  "cm_min": -0.2285606053344897,
+  "n_neg": 90,
+  "probe_max": 0.2285606053344897
+ },
+ "c7_drawn_above": 4,
+ "c7": {
+  "margin_min": 8,
+  "margin_max": 25,
+  "rev_growth": 0.5,
+  "cost_growth": 0.20454545454545459,
+  "crossing_months": 4
+ },
+ "c8": {
+  "n": [
+   10000,
+   10000,
+   10000
+  ],
+  "unique": 104,
+  "width400": 0.2675,
+  "empty400": 0.74,
+  "fd": 3.806102843562479,
+  "sturges": 15,
+  "range": [
+   92,
+   199
+  ],
+  "width3": 35.666666666666664,
+  "width45": 2.3777777777777778
+ },
+ "c9": {
+  "max": 100.0,
+  "above": 0.0156454646947086,
+  "bw": 0.3549639117563962,
+  "n100": 304,
+  "share100": 0.0304,
+  "n_values": 20,
+  "min": 81.0,
+  "above_995": 0.042602503982304266
+ }
+}
