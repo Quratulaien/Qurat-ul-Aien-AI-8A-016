@@ -1,0 +1,8 @@
+[join] features 24, table rows 24, rows unmatched 0, features unmatched 0, duplicate codes 0
+[project] Lambert cylindrical equal-area, true scale at 30.50°N (collection mean)
+[normalize] 30,564 cases / 57,857,000 residents = 52.8 per 100,000 (pooled)
+           r(cases, population) +0.986  ->  r(rate, population) -0.000
+[suppress] rule: merge or suppress any district under 20 cases; smallest count 186 -> none suppressed (widest 95% CI ±14% of the rate)
+[classify] natural k=5; edges [30.4, 33.8, 47.5, 54.4, 64.8, 76.5]; per class [3, 6, 6, 6, 3]; GVF equal 0.969, quantile 0.908, natural 0.969
+top 3 by rate ['D19', 'D20', 'D21']; by count ['D17', 'D13', 'D09']; overlap 0
+saved /tmp/tmp.wwZRJj3TGv/W5_AI-016/partD_choropleth.png

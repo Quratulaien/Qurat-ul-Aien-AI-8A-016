@@ -1,0 +1,71 @@
+
+==============================================================================
+B1 · The size range for D1
+==============================================================================
+pop_m 0.6–353.4 M (×589). matplotlib's s is AREA in points²; diameter = √s.
+ lo_pt2  hi_pt2  smallest_diam_pt  largest_diam_pt  diam_ratio  centres_hidden  largest_covers_plot_%
+      2    1600               1.4             40.0        28.3               7                    0.6
+      6    1600               2.4             40.0        16.3               7                    0.6
+     16    1600               4.0             40.0        10.0               7                    0.6
+     36    1600               6.0             40.0         6.7              11                    0.6
+     16     400               4.0             20.0         5.0               3                    0.2
+     16     900               4.0             30.0         7.5               6                    0.4
+     16    2500               4.0             50.0        12.5              13                    1.0
+     16    4900               4.0             70.0        17.5              25                    1.9
+CHOSEN sizes=(16, 1600) pt²:
+  low end  16 pt² = 4 pt ≈ 1.4 mm across: the smallest mark that still
+           reads as a filled disc carrying its region letter; 2–6 pt² (1.4–2.4 pt) shrink to a speck.
+  high end 1600 pt² = 40 pt across: covers 0.6% of the plot; at 4900 pt² the biggest
+           mark hides more centres (see table) — the knee of the trade-off.
+  implied DIAMETER ratio √(1600/16) = 10× (area ratio 100×). A radius encoding of
+           the same 589× range would be 589× across.
+proof it is AREA: s − lo is proportional to (value − min): 1 M -> s 18 pt², 50 M -> s 238 pt², 350 M -> s 1585 pt²; (s(350)−lo)/(s(50)−lo) = 7.07 = (350−0.6)/(50−0.6) = 7.07
+note: linear-in-area with a floor (seaborn's sizes=(lo, hi) rule) keeps tiny countries visible; a strictly proportional s = k·pop would make the 0.6 M country 1.6 pt across. The size legend uses the same function, so readers convert area back to people.
+
+==============================================================================
+B2 · Overplotting — scatter_dense.csv
+==============================================================================
+n = 9,000; points within 0.3 of (3.1, 3.0): 427; true density there is 3.9× the surrounding ring
+  opaque               ink inside / ring =  1.16×  (inside ink 0.62) -> a blob is seen but its DENSITY is not: inside and ring both saturate, so 800 points look like 80
+  alpha=0.04           ink inside / ring =  3.22×  (inside ink 0.27) -> visible, with its density
+  hexbin gridsize=60   ink inside / ring =  4.77×  (inside ink 0.44) -> visible, with its density
+  2-D KDE              ink inside / ring =  2.14×  (inside ink 0.48) -> visible, with its density
+Declared parameters: marker s=6 pt², alpha=0.04, hexbin gridsize=60 (mincnt=1),
+KDE Scott bandwidth (scipy default), 14 contour levels. The orange dashed circle is the 2R ring.
+PUBLISH: hexbin — it keeps every point as a COUNT with a readable colour bar, shows the cluster,
+and does not depend on a bandwidth the reader cannot see (the KDE's smoothing is a hidden
+parameter that can spread or erase an 800-point cluster); alpha is fine for exploring but the
+darkness of a pixel is not a number a reader can decode.
+
+==============================================================================
+B3 · Scaling and dimension reduction
+==============================================================================
+  minmax  gdp_pc: Aldonia  1.000; other 59 span  0.000– 0.106 (width 0.106 of total 1.000 = 10.6%); median  0.017
+  zscore  gdp_pc: Aldonia  7.501; other 59 span -0.362– 0.473 (width 0.834 of total 7.863 = 10.6%); median -0.225
+  rank    gdp_pc: Aldonia  1.000; other 59 span  0.017– 0.983 (width 0.967 of total 0.983 = 98.3%); median  0.508
+  -> min–max: 59 countries share 11% of the axis; z-score: same crush, Aldonia at +7.5 sd; rank: even spread, but the 9.2× gap becomes one rank step.
+PCA on z-scored columns, explained variance ratio: PC1 67.5%, PC2 16.2%, PC3 7.7%, PC4 6.5%, PC5 2.2%
+first two components: 83.7% -> a two-axis picture misses 16.3% of the (standardised) variation
+PC1 loadings: gdp_pc +0.32, healthcare_access +0.51, urban_pct +0.46, median_age +0.45, cases_per_100k -0.47
+(sensitivity: on rank-scaled columns the first two explain 87.8%)
+
+==============================================================================
+B4 · Project before you measure
+==============================================================================
+total area: spherical 1,026,075 km²; shoelace on degrees 96.00 'square degrees'
+four northernmost (D21, D22, D19, D24): share of total area 10.51% (spherical) vs 11.08% (degrees) -> over-weighted by +5.5%
+most distorted district: D21 (35.0°N) share 2.15% -> 2.27% (+5.6%); most UNDER-weighted: D02 (25.9°N, -3.8%)
+Mercator area inflation (projected planar area ÷ true area): 1.237× in the south to 1.492× in the north (1.205× relative); Lambert equal-area error 3.6e-11%
+  [finding] geolib's self-check prints 1.144–1.168× because it scales by sec(lat), Mercator's LINEAR scale; the AREA scale is sec²(lat), which the projected polygons confirm.
+Why it matters: on a choropleth, AREA is the encoding channel, so a projection that makes northern districts 1.21× bigger than equal southern ones adds ink the data never asked for — slide 34's reason for equal-area.
+
+==============================================================================
+B5 · Small-area stability — funnel plot
+==============================================================================
+outside 95% limits: 1 of 40 -> ['U32'] (expected by chance if all share one rate ≈ 2.00)
+outside 99.8% limits: 1 of 40 -> ['U32'] (expected by chance if all share one rate ≈ 0.08)
+U32 exactly: expected 1.92 cases, observed 9; P(≥9) = 0.00018; chance that SOME unit of 40 does this = 0.0070 (about 1 map in 143).
+Meaning for case 6: the other 39 units — including every 'high' bar after U32 (15.4, 12.3, 12.2…) — sit inside the funnel, so the ranking below U32 is pure noise. U32 itself is surprising, but the file states all 40 share one true rate, so it is the rare extreme that a 40-unit map throws up about once in 140 maps; and its 9 cases give a 95% interval of 18.7–77.7 per 100k, so '4.7×' is not a measured number. Publishable action: flag U32 for follow-up, do not map it as a hotspot; merge units below ~43,000 people (see next line).
+9 vs 18 per 100,000: the 95% funnel at 9 first excludes 18 at a population of about 42,700 (λ ≈ 3.8 cases); for the two 95% intervals not to overlap at all needs ~248,800 (normal approx.) / 251,000 (exact Poisson). Below ~43,000 people the two rates cannot be told apart at all.
+
+saved partB_overplotting.png, partB_funnel.png

@@ -1,0 +1,71 @@
+============================================================================================
+Q1  Lie Factor audit  (effect = (final - initial) / initial)
+============================================================================================
+  Subject                          dim  data effect  graphic effect      LF   verdict
+A Corporate tax rate                 1        +6.7%         +500.0%   75.00   exaggerates 75.00x
+B Federal health budget (Rs bn)      2       +50.0%         +125.0%    2.50   exaggerates 2.50x
+C Export earnings ($ bn)             1       +20.0%          +20.0%    1.00   honest
+D Air-pollution index                1       +50.0%          +12.5%    0.25   understates (0.25)
+E City population (millions)         2      +300.0%        +1500.0%    5.00   exaggerates 5.00x
+
+============================================================================================
+Q3  Same two charts with ink_dimension left at 1 (the mistake)
+============================================================================================
+  B: LF with dim=1 ->  1.00   LF with dim=2 ->  2.50
+  E: LF with dim=1 ->  1.00   LF with dim=2 ->  5.00
+
+============================================================================================
+Q5  Chart F (dual axis): can a Lie Factor be computed?
+============================================================================================
+  Lie Factor compares ONE data effect with ONE ink effect, measured on a
+  single shared scale. A twin-axis chart has two scales; the 'ink' for
+  revenue and for cost are not comparable, so there is no single ink ratio
+  to put on top of the fraction. The formula is undefined for this chart.
+
+  What the data says (same unit, PKR millions):
+month  revenue_pkr_m  cost_pkr_m  margin  revenue_cost_ratio
+  Jan             52          44       8                1.18
+  Feb             58          46      12                1.26
+  Mar             61          47      14                1.30
+  Apr             66          49      17                1.35
+  May             71          51      20                1.39
+  Jun             78          53      25                1.47
+
+  Revenue exceeded cost in all 6 months (smallest margin 8 in Jan).
+  Revenue grew +50% Jan->Jun, cost +20%; margin widened 8 -> 25 PKR m.
+  ShaheenGo never ran at a loss. The 'loss until May' story is produced by
+  the two independently chosen axis windows (50-80 vs 40-56), nothing else.
+
+============================================================================================
+WRITTEN ANSWERS
+============================================================================================
+
+Q2  Which is honest, and what do the other four do wrong?
+    Honest: C (LF 1.00). Bars start at zero, ink is a
+    length, and the ink ratio (6/5 = +20%) equals the data ratio (30/25 = +20%).
+    A  Bars drawn from a 29.6% baseline: the ink encodes (value - 29.6), not the
+       value. A 6.7% rise becomes a 500% rise in ink (LF 75.0).
+    B  A coin icon scaled 1.5x in height AND width. The reader sees area, which
+       grows 2.25x, while the data grew 1.5x (LF 2.50).
+    D  Bars start at zero but the second bar is only 12.5% taller while the data
+       rose 50%: the ink encodes a smaller change than the data (LF 0.25),
+       so the graphic understates.
+    E  A bubble whose RADIUS is proportional to the value: area grows with the
+       square of the radius, so a 4x value looks like a 16x bubble (LF 5.00).
+
+Q3  Charts needing ink_dimension=2: B and E (icon scaled in both directions;
+    bubble sized by radius). If left at 1 the ink ratio is read as a length
+    ratio, so the 2.25x (B) and 16x (E) area growth is reported as only 1.5x and
+    4x, and the Lie Factor is badly under-reported, hiding the very distortion
+    being audited.
+
+Q4  Graphic D has LF 0.25 (< 1). An understated chart is still a distortion
+    because the reader takes away the wrong size of effect - a 50% rise in air
+    pollution looks like a 12.5% rise. Whoever is responsible for the pollution
+    (the polluting industry or the authority being judged on air quality)
+    benefits, since the problem looks minor and pressure to act is reduced.
+    Honesty means LF close to 1.0 in BOTH directions.
+
+Q5  See the printed output above: the Lie Factor is undefined for the dual-axis
+    chart because it has no single ink scale, and the data show revenue above
+    cost in every month.
