@@ -1,0 +1,81 @@
+ANALYSIS SERIES  2024-04-01 .. 2025-08-31  (518 calendar days; 505 usable; 13 unusable/missing)
+scaled days in analysis (21-23 hours filed): 215
+
+==============================================================================
+Q1  The window is a hypothesis: tslib.window_report() for 7, 28, 91
+==============================================================================
+ window   raw_sd  smoothed_sd  variation_removed_pct  periods_lost_each_end        cycle_removed
+      7 6818.197    4646.1871                   31.9                      3 weekly (day-of-week)
+     28 6818.197    4430.7976                   35.0                     14      roughly monthly
+     91 6818.197    4152.4932                   39.1                     45    roughly quarterly
+
+Reading: a rolling mean over exactly one cycle removes that cycle. A 7-day
+mean removes the day-of-week pattern completely; 28 and 91 remove it too, but
+also average across several weeks of real movement. The three windows remove
+32-39% of the raw variation: most of what they remove is the weekly cycle,
+which the 7-day window cancels and the others only partly cancel.
+The window for Part D is 7, chosen because the weekly cycle is the one Q3 finds
+large. The cost is 3 days at each end; 28 and 91 would cost 14 and 45.
+
+==============================================================================
+Q2  Three smoothers against one spike: 29 Nov 2024 (Black Friday)
+==============================================================================
+raw day total on 2024-11-29: 113,710 sessions (all 24 hours filed: 24)
+14-day centred window 2024-11-22 .. 2024-12-05, 14 usable days
+  centred MEAN   : 33,382   (the spike is inside the mean: it is pulled up)
+  centred MEDIAN : 24,780   (the spike cannot move the median)
+  EWMA span=14   : 38,113   (trailing by construction: it cannot be centred without a shift)
+  fortnight median of the window, spike included: 24,780
+Dashboard: the median, because a monitoring view must not be moved by one event.
+Quarterly report: the mean, because totals must add up across the quarter.
+
+==============================================================================
+Q3  seasonal_decompose(additive): weekly, then the yearly test
+==============================================================================
+days filled by interpolation for decomposition only: 13 (of 518)
+weekly seasonal component: one cycle, peak-to-trough amplitude = 7,569 sessions/day
+  by weekday: {'Mon': -2163, 'Tue': -2274, 'Wed': -2330, 'Thu': -2378, 'Fri': -947, 'Sat': 4902, 'Sun': 5191}
+largest residual: 2024-11-29 = 74,659 sessions (Friday; the spike the decomposition cannot explain by weekday)
+period=365 needs at least 730 days (two full cycles). The analysis series spans 518 days, so period=365 is NOT computable here.
+comparison that IS computable: period=91 (two cycles need 182 days). Quarterly seasonal amplitude = 18,741 sessions/day.
+  residual sd: period 7 = 3,709, period 91 = 3,911
+  seasonal sd: period 7 = 3,228, period 91 = 3,772
+  the 91-day model does NOT remove the weekly cycle, so the residual sd rises:
+  the day-of-week pattern goes back into 'resid'. The period has to match the
+  cycle you mean to cancel; a longer period is not a smoother residual.
+
+==============================================================================
+Q4  Trailing or centred: tslib.lag_at_turn() with a 31-day window
+==============================================================================
+  trailing turn : 2024-05-23
+  centred turn  : 2024-05-08
+  lag           : 15 days   half-window = 15 days
+Dashboard refreshes every morning: it must show the TRAILING 31-day mean,
+because the centred value needs days that have not happened yet. Its caption:
+'Trailing 31-day mean. A turn appears about 15 days after it happened. The
+centred value, computed after the window fills, is what the report uses.'
+
+==============================================================================
+Q5  The window is a claim: 12 start months x 5 window lengths, slope sign
+==============================================================================
+combinations computed: 60 of 60
+  rising : 33
+  falling: 27
+
+sign    falling  rising
+window                 
+7             7       5
+14            5       7
+28            5       7
+56            5       7
+91            5       7
+
+Lie Factor = (effect shown) / (effect in the data). It needs ONE effect in the
+data, measured between two fixed points that were chosen before looking. The
+cherry-picked window has no single effect: each start and length gives a
+different one, and which one is 'the data' depends on the choice being
+judged. The formula assumes the comparison was declared first; with a
+selected window that assumption is false, so the ratio has no value to take.
+Honest substitute: fix the window before plotting, and report the whole
+distribution of outcomes (every start, every length) rather than the one that
+was selected. Here the distribution is the result.

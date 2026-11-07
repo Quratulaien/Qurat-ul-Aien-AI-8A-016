@@ -1,0 +1,43 @@
+SELF-CHECK NUMBERS
+  c1_drops: [-958, -978]
+  c1_growth: 52.49999999999999
+  c2_closed: 21
+  c2_closed_wd: {'Monday': 3, 'Tuesday': 3, 'Wednesday': 3, 'Thursday': 3, 'Friday': 3, 'Saturday': 3, 'Sunday': 3}
+  c2_first: 207
+  c2_last: 253
+  c2_pct: 22.222222222222232
+  c2_slope_day: 0.9012975797380185
+  c2_slope_row: 1.2318962367555726
+  c3_mean_jul: 522.6303763440859
+  c3_mean_jun: 535.8873933624283
+  c3_mean_step: -2.473843793032926
+  c3_read_jul: (np.int64(24), np.int64(24))
+  c3_read_jun: (np.int64(12), np.int64(20))
+  c3_sum_jul: 12543.129032258064
+  c3_sum_jun: 8782.433333333332
+  c3_sum_step: 42.820657512436554
+  c4_cent: 2025-08-23
+  c4_lag: 15
+  c4_trail: 2025-09-07
+  c5_end: 92.2
+  c5_fall: {2023: np.float64(-42.41037376048817), 2024: np.float64(-42.77966101694914), 2025: np.float64(-41.939546599496225)}
+  c5_pct: -41.939546599496225
+  c5_start: 158.8
+  c6_oct: 4041.0
+  c6_oct_days: 11
+  c6_oct_pd: 367.3636363636364
+  c6_oct_share: 37.399352151781585
+  c6_pd_step: 1.998233141222494
+  c6_sep: 10805.0
+  c6_sep_pd: 360.1666666666667
+  c7_env: (np.float64(548.3), np.float64(708.6999999999999))
+  c7_rng: {'product_a': (np.float64(211.1), np.float64(270.0)), 'product_b': (np.float64(83.9), np.float64(250.6)), 'product_c': (np.float64(124.9), np.float64(153.0)), 'product_d': (np.float64(94.0), np.float64(106.3))}
+  c7_std: {'product_a': np.float64(16.010503248983593), 'product_b': np.float64(35.60646766645829), 'product_c': np.float64(7.2765965356653615), 'product_d': np.float64(3.5513679456956146)}
+  c8_multi: 27.625
+  c8_rates: {'touch_search': 42.6, 'touch_social': 32.3, 'touch_email': 27.5, 'touch_direct': 28.6}
+  c8_single: 72.375
+  c8_sum: 130.975
+  c9_prem: (np.float64(240.0), np.float64(228.0))
+  c9_share0: 24.0
+  c9_share1: 38.0
+  c9_tot: (np.float64(1000.0), np.float64(600.0))

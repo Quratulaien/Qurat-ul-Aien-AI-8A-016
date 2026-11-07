@@ -1,0 +1,14 @@
+location = Pakistan; rows 1674; span 2020-01-05 .. 2024-08-04
+index audit (daily): {'dtype_ok': True, 'monotonic': True, 'n_rows': 1674, 'n_duplicated': 0, 'n_missing': 0, 'missing_dates': [], 'span': ('2020-01-05 00:00:00', '2024-08-04 00:00:00'), 'partial_tail': True, 'tail_period': '2024-08', 'tail_count': 4}
+negative new_cases rows: 0
+missing new_cases values: 0
+monthly series: 46 months 2020-03-01 .. 2023-12-01
+monthly audit: {'dtype_ok': True, 'monotonic': True, 'n_rows': 46, 'n_duplicated': 0, 'n_missing': 0, 'missing_dates': [], 'span': ('2020-03-01 00:00:00', '2023-12-01 00:00:00'), 'partial_tail': False, 'tail_period': '2023', 'tail_count': 12}
+banked figsize for the time-series panel: (9.0, 3.098141499472017)
+residual sd additive = 25,480 cases; multiplicative ratio sd = 0.692
+year | mean per month | within-year range (max-min) | range / mean
+2020 | 46,948 | 131,191 | 2.79
+2021 | 68,633 | 137,502 | 2.00
+2022 | 23,548 | 116,346 | 4.94
+2023 | 415 | 2,211 | 5.33
+trend in range per year: -40,810; trend in level per year: -18,469

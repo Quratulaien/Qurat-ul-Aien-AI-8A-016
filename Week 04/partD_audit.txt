@@ -1,0 +1,8 @@
+index audit, hourly (rows present; missing = hours nobody filed)
+{'dtype_ok': True, 'monotonic': True, 'n_rows': 12384, 'n_duplicated': 0, 'n_missing': 312, 'missing_dates': ['2024-05-18 00:00:00', '2024-05-18 01:00:00', '2024-05-18 02:00:00', '2024-05-18 03:00:00', '2024-05-18 04:00:00', '2024-05-18 05:00:00', '2024-05-18 06:00:00', '2024-05-18 07:00:00', '2024-05-18 08:00:00', '2024-05-18 09:00:00', '2024-05-18 10:00:00', '2024-05-18 11:00:00'], 'span': ('2024-04-01 00:00:00', '2025-09-11 23:00:00'), 'partial_tail': False, 'tail_period': '2025-09-11', 'tail_count': 24}
+
+index audit, daily (complete days with a value)
+{'dtype_ok': True, 'monotonic': True, 'n_rows': 516, 'n_duplicated': 0, 'n_missing': 13, 'missing_dates': ['2024-05-18 00:00:00', '2024-07-02 00:00:00', '2024-07-03 00:00:00', '2024-09-27 00:00:00', '2024-11-11 00:00:00', '2024-12-25 00:00:00', '2025-01-01 00:00:00', '2025-02-14 00:00:00', '2025-03-30 00:00:00', '2025-03-31 00:00:00', '2025-06-07 00:00:00', '2025-07-19 00:00:00'], 'span': ('2024-04-01 00:00:00', '2025-09-11 00:00:00'), 'partial_tail': True, 'tail_period': '2025-09', 'tail_count': 11}
+
+catalogue sub-category shares max deviation vs shares_eight: 0.243
+other bucket: no categories below 1.0%

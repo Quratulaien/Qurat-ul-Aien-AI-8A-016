@@ -1,0 +1,8 @@
+TITLES AND NUMBERS
+  monthly mean/day first 15,544, last 28,847
+  weekday mean/hr 877, weekend 1,181, +34.7%; peak Sat 20:00
+  sub-category net shares: {'Phones': 24.76, 'Laptops': 18.23, 'Audio': 14.99, 'Accessories': 13.34, 'Footwear': 10.96, 'Wearables': 9.35, 'Cameras': 5.97, 'Drones': 2.41}
+  max deviation vs shares_eight: 0.243
+  other: no categories below 1.0%
+  negatives: 7 rows, sum -1.0693
+wrote partD_figure.png, partD_decisions.md, partD_audit.txt

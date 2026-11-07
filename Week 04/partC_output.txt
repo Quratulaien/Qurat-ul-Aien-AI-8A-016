@@ -1,0 +1,37 @@
+==============================================================================
+1. Part-to-whole legality (slide 32): exclusive parts, meaningful whole, share is the question
+==============================================================================
+
+(a) four touch_* columns, case08 (4,000 customers)
+    shares: {'touch_search': 42.62, 'touch_social': 32.3, 'touch_email': 27.48, 'touch_direct': 28.58}
+    sum = 130.98%   exclusive = False   customers touched by 2+ channels = 1105 (27.62%)   zero-touch = 0
+    VERDICT: neither a pie nor a bar of shares. The four rates are reach (who was touched),
+             and they overlap. Draw reach bars with a 100% reference, not a share.
+
+(b) shares_eight.csv: eight sub-categories
+    sum = 100.0%  (assertion passed)
+    exclusive: each SKU appears once after the dedupe = True
+    meaningful whole: net revenue of the eight sub-categories, negatives netted inside
+    share is the question: the claim is about ranking, so yes
+    VERDICT: a pie is LEGAL here. The ranking is still read better as bars
+             (position beats angle, Week 2), which is what the Part C test measures.
+
+(c) premium vs other revenue, 2025Q4
+    premium 228.0 / other 372.0 of total 600.0
+    shares: {'premium': 38.0, 'other': 62.0}   sum = 100.0%
+    exclusive: yes (two parts, one revenue each). whole: total revenue, yes.
+    share is the question: NO. The claim is that premium's SHARE rose; this is one quarter's
+    composition, and the change lives in the denominator (Part A case 9).
+    VERDICT: neither. A single-quarter 2-slice pie can be drawn, but it cannot show the claim.
+             Show premium in absolute terms, indexed, against total.
+
+==============================================================================
+2. Stimuli (no numbers, no percentages, file order for the pie)
+==============================================================================
+true rank order (largest first): A B C H G D E F
+wrote partC_stim_pie.png and partC_stim_bars.png (both 300 dpi, letters only)
+template written: pie_ranking_results.csv (no rows: no reader has been run)
+true order for scoring: A B C H G D E F
+
+Prediction in the brief, to test: C (15.0%), H (13.1%), G (11.2%) are about 2 points apart;
+readers should get A, B right and disagree about the middle three.
