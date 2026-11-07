@@ -1,0 +1,108 @@
+==========================================================================
+FILE 1  district_transit.csv  (district register)
+==========================================================================
+rows 25; distinct code strings 25
+codes not in the boundary file (as filed):
+  line 14: 'd13' (Mehrabad), population 6,327,000
+  line 21: 'D 20' (Tarmak), population 1,340,000
+  line 26: 'D00' (Qilabad Capital Territory), population 2,890,000
+register rows matched to boundaries as filed: 22 of 25
+
+non-numeric per numeric column:
+  population           blank=0 not-a-number=[]
+  households           blank=0 not-a-number=[]
+  area_km2             blank=0 not-a-number=[]
+  lon                  blank=0 not-a-number=[]
+  lat                  blank=0 not-a-number=[]
+  income_pc_usd        blank=0 not-a-number=[]
+  stops                blank=0 not-a-number=[]
+  road_km              blank=0 not-a-number=[]
+  boardings_annual     blank=0 not-a-number=[]
+  fare_concession_pct  blank=0 not-a-number=[]
+  vehicles_registered  blank=0 not-a-number=[]
+
+R1 code typed wrong: ['d13', 'D 20'] -> ['D13', 'D20']
+R2 rows whose code is not one of the 24 boundary districts: ['D00']
+  'Qilabad Capital Territory' population 2,890,000, households 412,700
+  population of all 25 rows: 60,747,000; of the 24 districts: 57,857,000
+  after R2: 24 rows, distinct codes 24
+
+R3 boardings per resident per year (<1 flagged): [('D05', 0.0204), ('D15', 0.0187), ('D23', 0.0119)]
+  D05 boardings 14551 x 1000 = 14,551,000 -> 20.44 per resident; band of the others 4.68-30.66; repaired
+  D15 boardings 14668 x 1000 = 14,668,000 -> 18.73 per resident; band of the others 4.68-30.66; repaired
+  D23 boardings 20302 x 1000 = 20,302,000 -> 11.92 per resident; band of the others 4.68-30.66; repaired
+  boardings per 1,000 residents after repair: min 4,683, max 30,655
+R4 fare_concession_pct filed as a fraction: ['D02', 'D10', 'D18', 'D22']
+R5 road_km negative (sentinel): ['D06', 'D16']
+
+districts after cleaning 24; population 57,857,000; households 8,908,512
+  boardings_annual total 873,564,130; per 1,000 residents, pooled 15,099
+  road_km usable 22 of 24; fare_concession_pct 20.9–42.6
+  area_km2 vs geometry, max relative deviation 0.00%
+  join after cleaning: 24 of 24 matched; 0 boundary features unmatched
+  wrote clean/district_transit_clean.csv
+
+==========================================================================
+FILE 2  routes.csv  (route table, 36 routes)
+==========================================================================
+rows 36; distinct mode labels as filed: ['BRT', 'Bus', 'Bus Rapid Transit', 'Ferry', 'Metro', 'brt']
+distinct mode labels after mapping: ['BRT', 'Bus', 'Ferry', 'Metro']; rows relabelled: 3
+punctuality_pct above 100 (sentinel): ['R003', 'R025', 'R033']
+cost_recovery_pct exactly 0: ['R022', 'R033'] (['Bus', 'Ferry']): read as a code, not a measurement
+routes per mode after mapping: {'BRT': 6, 'Bus': 22, 'Ferry': 4, 'Metro': 4}
+punctuality usable 33 of 36, range 62.9–98.8
+boardings_annual summed over routes: 873,564,820
+register boardings (cleaned): 873,564,130; difference 690
+routes serving more than one district: 28 of 36; mean 2.56, max 4
+attributed to every district served: 2,704,739,571 = 3.096x the network total
+  wrote clean/routes_clean.csv
+
+==========================================================================
+FILE 3  ridership_daily.csv  (daily returns, four modes)
+==========================================================================
+rows 2159; ISO 1774, DD/MM/YYYY 385, other 0
+  first field > 12: 230 (cannot be a month); second > 12: 0; ambiguous (month-first accepts them): 155; of those, month-first gives a different real day for 137
+  => day-first, the convention the slash rows follow (230 rows prove it)
+
+exact re-submissions (same key and every field): 30
+  by mode: {'Bus': 30}; months: {Period('2026-05', 'M'): 30}
+  rows sharing a (date, mode) key: 60; all exact: True
+
+impossible: trips_on_time > trips_operated: 7 rows
+  2026-04-21 BRT: on time 2115 > operated 2106
+  2026-09-20 BRT: on time 1520 > operated 1503
+  2026-05-16 BRT: on time 1861 > operated 1843
+  2025-06-14 Metro: on time 1224 > operated 1214
+  2026-04-12 Ferry: on time 202 > operated 199
+  2025-08-26 Metro: on time 1587 > operated 1566
+  2026-01-23 Ferry: on time 295 > operated 291
+
+reporting span 2025-04-01 -> 2026-09-30 = 548 days x 4 modes = 2192 slots; filed 2129; never filed 63
+  never filed by mode: {'Bus': 19, 'BRT': 4, 'Metro': 18, 'Ferry': 22}
+  longest single gap: 14 missing days in a row, Metro ending 2026-02-23
+
+last filing by mode: {BRT: 2026-09-30, Bus: 2026-09-21, Ferry: 2026-09-21, Metro: 2026-09-30}
+  slots filed from 2026-09-22 onward: 18 of 36 (two modes stopped filing: ['Bus', 'Ferry'])
+
+boardings, 12 months to 2026-08-31, duplicates removed: 845,531,940; with them: 864,127,819 (+2.20%)
+  the register annual total 873,564,130 covers 96.8% of that register figure
+  wrote clean/ridership_daily_clean.csv  (full calendar, 2192 rows)
+
+tslib.audit_index() per mode, freq D:
+  Bus    dtype_ok=True monotonic=True dup=0 missing=10 partial_tail=True span 2025-04-01..2026-09-21
+  BRT    dtype_ok=True monotonic=True dup=0 missing=4 partial_tail=False span 2025-04-01..2026-09-30
+  Metro  dtype_ok=True monotonic=True dup=0 missing=18 partial_tail=False span 2025-04-01..2026-09-30
+  Ferry  dtype_ok=True monotonic=True dup=0 missing=13 partial_tail=True span 2025-04-01..2026-09-21
+
+==========================================================================
+FILE 4  fare_revenue.csv  (published fare table)
+==========================================================================
+rows 288: part rows 216, published 'All tickets' rows 72
+parts summed vs published 'All tickets': max |diff| journeys 0, revenue 0
+every row summed = 200.0% of journeys; 200.0% of revenue
+journeys 934,051,014; revenue 36,669,953,119 PKR; mean fare 39.3 PKR per journey
+  wrote clean/fare_revenue_parts.csv, clean/fare_revenue_totals.csv
+  journeys / boardings (12 months to 2026-08) ratio: 1.105 over the whole table, 0.767 for the 12 months
+  copied regions.geojson unchanged
+
+wrote partA_decisions.md with 17 decisions

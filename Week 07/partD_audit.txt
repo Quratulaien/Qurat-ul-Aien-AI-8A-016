@@ -1,0 +1,21 @@
+NUMBERS USED ON THE SCREEN
+  network on-time 2025Q2 78.87%  2026Q2 80.60%  change +1.73 pts
+  Metro   96.11% ->  94.80%  change -1.31
+  BRT     88.09% ->  87.24%  change -0.85
+  Bus     74.24% ->  73.14%  change -1.10
+  Ferry   80.97% ->  79.78%  change -1.19
+  departures share 2025Q2: Metro 10.9%, BRT 15.1%, Bus 71.6%, Ferry 2.4%
+  departures share 2026Q2: Metro 21.8%, BRT 18.4%, Bus 57.6%, Ferry 2.2%
+  rate_decomposition: change +1.73  within -1.10  mix +2.82  reversal=True
+  every mode fell: True
+
+channel_conflicts()
+  conflicts: {}
+  redundant: {'component': ['y', 'lightness'], 'mode': ['hue', 'shape']}
+  positional: {'x': ['quarter', 'pts'], 'y': ['on_time_pct', 'departures_pct', 'component']}
+  channels_used: {'x': ['quarter', 'pts'], 'y': ['on_time_pct', 'departures_pct', 'component'], 'hue': ['mode'], 'shape': ['mode'], 'lightness': ['component']}
+  ok: True
+
+cvd_report() on the palette the screen uses (mode hues)
+  worst deutan pair: Bus/Ferry dE 7.5 (needs a second channel)
+  the trend panel separates modes by marker shape as well as hue; the mix panel labels every share above 4% in place, and Ferry (2%) is identified by its legend entry only
